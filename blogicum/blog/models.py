@@ -39,10 +39,10 @@ class Post(PublishedModel):
     title = models.CharField(max_length=256,
                              verbose_name='Заголовок')
     text = models.TextField(verbose_name='Текст')
-    pub_date = models.DateTimeField(
-                    verbose_name='Дата и время публикации',
-                    help_text=('Если установить дату и время в будущем —'
-                               'можно делать отложенные публикации.'))
+    pub_date = models.DateTimeField(verbose_name='Дата и время публикации',
+                                    help_text=('Если установить дату и время'
+                                               'в будущем — можно делать'
+                                               'отложенные публикации.'))
     author = models.ForeignKey(
         User,
         on_delete=models.CASCADE,
