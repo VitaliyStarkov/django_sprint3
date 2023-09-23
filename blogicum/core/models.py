@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class PublishedModel(models.Model):
+class Published_Created(models.Model):
     is_published = models.BooleanField(default=True,
                                        verbose_name='Опубликовано',
                                        help_text=('Снимите галочку, '
