@@ -1,7 +1,7 @@
 from django.db import models
 
 
-class Published_Created(models.Model):
+class PublishedCreated(models.Model):
     is_published = models.BooleanField(default=True,
                                        verbose_name='Опубликовано',
                                        help_text=('Снимите галочку, '
@@ -11,3 +11,4 @@ class Published_Created(models.Model):
 
     class Meta:
         abstract = True
+        ordering = ('created_at',)
