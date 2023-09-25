@@ -2,7 +2,7 @@ from django.db import models
 from django.contrib.auth import get_user_model
 
 from core.models import PublishedCreated
-from blog.constants import MAX_LENGTH_TITLE, FIELD_LENGTH
+from blog.constants import MAX_LENGTH_FIELD, LENGTH_SECTION
 
 User = get_user_model()
 
@@ -10,7 +10,7 @@ User = get_user_model()
 class Category(PublishedCreated):
     title = models.CharField(
         'Заголовок',
-        max_length=MAX_LENGTH_TITLE
+        max_length=MAX_LENGTH_FIELD
     )
     description = models.TextField('Описание')
     slug = models.SlugField(
@@ -21,32 +21,32 @@ class Category(PublishedCreated):
                    'дефис и подчёркивание.')
     )
 
-    class Meta:
+    class Meta(PublishedCreated.Meta):
         verbose_name = 'категория'
         verbose_name_plural = 'Категории'
 
     def __str__(self):
-        return self.title[:FIELD_LENGTH]
+        return self.title[:LENGTH_SECTION]
 
 
 class Location(PublishedCreated):
     name = models.CharField(
         'Название места',
-        max_length=MAX_LENGTH_TITLE
+        max_length=MAX_LENGTH_FIELD
     )
 
-    class Meta:
+    class Meta(PublishedCreated.Meta):
         verbose_name = 'местоположение'
         verbose_name_plural = 'Местоположения'
 
     def __str__(self):
-        return self.name[:FIELD_LENGTH]
+        return self.name[:LENGTH_SECTION]
 
 
 class Post(PublishedCreated):
     title = models.CharField(
         'Заголовок',
-        max_length=MAX_LENGTH_TITLE
+        max_length=MAX_LENGTH_FIELD
     )
     text = models.TextField('Текст')
     pub_date = models.DateTimeField(
@@ -84,4 +84,4 @@ class Post(PublishedCreated):
         ordering = ('-pub_date',)
 
     def __str__(self):
-        return self.title[:FIELD_LENGTH]
+        return self.title[:LENGTH_SECTION]
